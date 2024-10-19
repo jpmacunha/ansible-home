@@ -1,6 +1,0 @@
----
-- name: Test connectivity to Proxmox server
-  hosts: proxmox_initial
-  tasks:
-    - name: Ping Proxmox
-      ansible.builtin.ping:

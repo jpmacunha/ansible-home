@@ -1,0 +1,9 @@
+---
+- name: Setup Proxmox with ansible user
+  hosts: proxmox_ansible
+  become: true
+
+  tasks:
+    - name: Setup SSH (hardening)
+      ansible.builtin.include_tasks: ../tasks/setup-ssh.yml
+
