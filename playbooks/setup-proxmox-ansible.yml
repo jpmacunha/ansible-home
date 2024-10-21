@@ -4,6 +4,8 @@
   become: true
 
   tasks:
-    - name: Setup SSH (hardening)
-      ansible.builtin.include_tasks: ../tasks/setup-ssh.yml
+    - name: Resource Proxmox SSD wearout
+      ansible.builtin.include_tasks: ../tasks/disable-proxmox-services.yml
+    - name: Install log2ram
+      ansible.builtin.include_tasks: ../tasks/install-log2ram.yml
 

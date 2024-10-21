@@ -1,0 +1,24 @@
+---
+- name: Disable and stop pve-ha-crm.service
+  systemd:
+    name: pve-ha-crm.service
+    enabled: false
+    state: stopped
+
+- name: Disable and stop pve-ha-lrm.service
+  systemd:
+    name: pve-ha-lrm.service
+    enabled: false
+    state: stopped
+
+- name: Disable and stop pvesr.timer
+  systemd:
+    name: pvescheduler
+    enabled: false
+    state: stopped
+
+- name: Disable and stop corosync.service
+  systemd:
+    name: corosync.service
+    enabled: false
+    state: stopped

@@ -1,0 +1,26 @@
+- name: Download and add the azlux GPG key
+  ansible.builtin.get_url:
+    url: "https://azlux.fr/repo.gpg"
+    dest: "/usr/share/keyrings/azlux-archive-keyring.gpg"
+    mode: '0644'
+
+- name: Add the azlux Log2Ram APT repository
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main"
+    filename: "azlux"
+    state: present
+
+- name: Update APT cache
+  apt:
+    update_cache: yes
+
+- name: Install Log2Ram
+  apt:
+    name: log2ram
+    state: present
+
+- name: Enable and start the Log2Ram service
+  systemd:
+    name: log2ram
+    enabled: true
+    state: started
