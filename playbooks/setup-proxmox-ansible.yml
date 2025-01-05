@@ -8,4 +8,6 @@
       ansible.builtin.include_tasks: ../tasks/disable-proxmox-services.yml
     - name: Install log2ram
       ansible.builtin.include_tasks: ../tasks/install-log2ram.yml
+    - name: Configure root subuid and subgid
+      ansible.builtin.include_tasks: ../tasks/configure-root-subuid-subgid.yml
 

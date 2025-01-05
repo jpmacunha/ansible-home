@@ -1,0 +1,36 @@
+---
+- name: Remove any existing root mappings from /etc/subuid
+  lineinfile:
+    path: /etc/subuid
+    state: absent
+    regexp: "^root:"
+
+- name: Remove any existing root mappings from /etc/subgid
+  lineinfile:
+    path: /etc/subgid
+    state: absent
+    regexp: "^root:"
+
+- name: Ensure /etc/subuid has the correct root mapping
+  lineinfile:
+    path: /etc/subuid
+    state: present
+    line: "root:100000:200000"
+
+- name: Ensure /etc/subgid has the correct root mapping
+  lineinfile:
+    path: /etc/subgid
+    state: present
+    line: "root:100000:200000"
+
+- name: Remove ansible user from /etc/subuid
+  lineinfile:
+    path: /etc/subuid
+    state: absent
+    regexp: "^ansible:"
+
+- name: Remove ansible user from /etc/subgid
+  lineinfile:
+    path: /etc/subgid
+    state: absent
+    regexp: "^ansible:"
